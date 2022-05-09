@@ -2,7 +2,7 @@
 game:service [[StarterGui]]:SetCore(
     [[SendNotification]],
     {
-        Title = [[Noti System]],
+        Title = [[Kekware v1.01 has loaded:]],
         Text = [[legendary#0001]]
     }
 )
