@@ -23,7 +23,7 @@ plr.Chatted:Connect(
         --[ Commands ]
         if args[1] == Prefix .. [[adv]] then
             task.wait(0.8)
-            local x = [[Test]]
+            local x = [[Kekware v1.01]]
             local y = [[all]]
             local msg = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(x, y)
         end
