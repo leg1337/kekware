@@ -1,2 +1,3 @@
-# admin
-open src admin since most people like to say that i "claim code that isn't mine" and i "skidded" off of other people
+# kekware
+-- Open sourced admin, since users love to claim that I "steal code" and "skid" off of others.
+-- Going to be the best Dollhouse-Roleplay Admin ever created so stay tuned.......
