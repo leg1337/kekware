@@ -11,7 +11,6 @@ game:service [[StarterGui]]:SetCore(
 )
 
 --[ Local Variables ]
-local LP = LocalPlayer
 local plr = game.Players.LocalPlayer
 local Prefix = ">"
 local TP = game:GetService[[TeleportService]]
