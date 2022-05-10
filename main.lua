@@ -1,3 +1,6 @@
+-- credits to legendary#0001
+-- https://goonlinetools.com/lua-beautifier/ is really cool
+
 --[ Notification System ]
 game:service [[StarterGui]]:SetCore(
     [[SendNotification]],
@@ -129,4 +132,8 @@ plr.Chatted:Connect(
     end
 )
 
-print [[legendary#0001]]
+while task.wait(2.1) do
+print [[Kekware on top]]
+end
+
+
