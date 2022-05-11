@@ -20,6 +20,49 @@ game:service [[StarterGui]]:SetCore(
         Text = [[legendary#0001]]
     }
 )
+task.wait(3)
+notification("For Commands, Press F9", "Kekware v1.02 (>cmds)", 2)
+
+--[  Functions  ]
+
+local function delete()
+    game.Players.LocalPlayer.Character.LeftFoot:WaitForChild "OriginalSize":Destroy()
+    game.Players.LocalPlayer.Character.LeftLowerLeg:WaitForChild "OriginalSize":Destroy()
+    game.Players.LocalPlayer.Character.LeftUpperLeg:WaitForChild "OriginalSize":Destroy()
+end
+
+local function cmds()
+    print [[                                 ░░▓▓▓▓████▓▓▒▒░░░░
+        1337                     ▒▒██████▓▓██████▒▒░░░░▒▒▒▒▒▒
+                              ░░██████████▓▓████▒▒        ░░░░
+                          ░░██████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓          ░░
+                        ▓▓████████▓▓▓▓▓▓▓▓████████░░      ░░░░
+                      ██████▓▓▓▓▓▓▓▓▓▓████▒▒      ░░░░░░░░░░
+                  ▒▒████████▓▓████▓▓
+            ▒▒██████████████▓▓  ░░                    1337
+            ░░▓▓▓▓████████▓▓
+          ░░░░██▓▓▓▓▓▓████▒▒
+        ░░░░░░██▓▓▒▒▓▓▓▓▓▓▓▓   1337
+        ░░░░░░░░▒▒▒▒▒▒▓▓████
+      ░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒
+      ░░░░░░▒▒▒▒▓▓▒▒░░
+    ░░░░▒▒▒▒▒▒▒▒▒▒
+    ░░░░▒▒▒▒▒▒▒▒
+    ░░▒▒▒▒▒▒▒▒
+  ░░░░▒▒▒▒▒▒
+  ░░▒▒▒▒▒▒░░          1337         >>> | Kekware v1.02 | <<<
+  ░░▒▒▒▒▒▒                          ^^^^^^^^^^^^^^^^^^^^^^^^
+    ▒▒▒▒░░                         >>> |   Commands:   | <<<  
+    ░░▒▒                            
+xD  ▒▒▒▒                            . adv (advertises Kekware v1.02)
+    ░░░░                            . rj (rejoins game)    
+    ▒▒░░							                          . kill (kills player)
+    ▒▒                              . bring (brings player to you)
+    ▒▒                              . legrescale (increases the size of your leg)
+    ▒▒         1337                 . re (refreshes your character)
+    ░░                              . ping (outputs your latency in ms)
+    ░░  legendary#0001]]
+end
 
 --[ Local Variables ]
 local plr = game.Players.LocalPlayer
@@ -75,7 +118,7 @@ plr.Chatted:Connect(
         local loweredString = string.lower(message)
         local args = string.split(loweredString, " ")
         if args[1] == Prefix .. [[re]] then
-            local CF = game:GetService [[Players]].LocalPlayer.Character.HumanoidRootPart.CFrame
+            local CF = Service.LocalPlayer.Character.HumanoidRootPart.CFrame
             local chr = game.Players.LocalPlayer.Character
             for i, v in next, chr:GetDescendants() do
                 if v:IsA [[Part]] and v.Name == [[HumanoidRootPart]] then
@@ -109,7 +152,7 @@ plr.Chatted:Connect(
         local args = msg:lower():split(" ")
         print(args[1], args[2])
         if args[1] == Prefix .. "bring" then
-            for i, v in pairs(game:GetService("Players"):GetPlayers()) do
+            for i, v in pairs(Service:GetPlayers()) do
                 if v.Character then
                     if
                         v.Name:lower():sub(1, #args[2]) == args[2]:lower() or
@@ -122,7 +165,7 @@ plr.Chatted:Connect(
                         plr.Character.Animate.Disabled = true
                         plr.Character.Humanoid:Destroy()
                         Humanoid.Parent = plr.Character
-                        task.wait(game:GetService("Players").RespawnTime - 0.3)
+                        task.wait(Service.RespawnTime - 0.3)
                         Tool.Parent = plr.Character
                         firetouchinterest(Tool.Handle, v.Character.HumanoidRootPart, 0)
                         LP.CharacterAdded:wait()
@@ -195,7 +238,38 @@ plr.Chatted:Connect(
             end
         )
 
-        while task.wait(5) do
+        plr.Chatted:Connect(
+            function(message)
+                local loweredString = string.lower(message)
+                local args = string.split(loweredString, " ")
+                if args[1] == Prefix .. [[legrescale]] then
+                    game.Players.LocalPlayer.Character.LeftLowerLeg.LeftKneeRigAttachment.OriginalPosition:Destroy()
+                    game.Players.LocalPlayer.Character.LeftUpperLeg.LeftKneeRigAttachment.OriginalPosition:Destroy()
+                    game.Players.LocalPlayer.Character.LeftLowerLeg:WaitForChild "LeftKneeRigAttachment":Destroy()
+                    game.Players.LocalPlayer.Character.LeftUpperLeg:WaitForChild "LeftKneeRigAttachment":Destroy()
+
+                    for i, v in next, game.Players.LocalPlayer.Character.Humanoid:GetChildren() do
+                        if v:IsA "NumberValue" then
+                            delete()
+                            v:Destroy()
+                        end
+                    end
+                end
+            end
+        )
+
+        plr.Chatted:Connect(
+            function(message)
+                local loweredString = string.lower(message)
+                local args = string.split(loweredString, " ")
+
+                if args[1] == Prefix .. [[cmds]] then
+                    cmds()
+                end
+            end
+        )
+
+        while task.wait(7) do
             print [[Kekware on top]]
         end
     end
